@@ -1,0 +1,7 @@
+b, table_size, exe_time, filename
+27183, 402221, 0.4850058556, english_small.txt
+250726, 1000081, 0.4330358505, english_small.txt
+27183, 402221, 1.1139996052, english_large.txt
+250726, 1000081, 1.1200368404, english_large.txt
+27183, 402221, 1.3289651871, french.txt
+250726, 1000081, 1.1460011005, french.txt
