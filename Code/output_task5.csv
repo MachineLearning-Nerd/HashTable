@@ -1,0 +1,7 @@
+b, table_size, exe_time, filename, collision_count, total_probe, max_probe,
+27183, 402221, 0.6609997749, english_small.txt, 8245, 0, 4, 
+250726, 1000081, 0.6549990177, english_small.txt, 3431, 0, 2, 
+27183, 402221, 1.6829960346, english_large.txt, 40297, 0, 5, 
+250726, 1000081, 1.6252560616, english_large.txt, 17540, 0, 4, 
+27183, 402221, 1.8489675522, french.txt, 43261, 0, 6, 
+250726, 1000081, 1.9250030518, french.txt, 18981, 0, 4, 

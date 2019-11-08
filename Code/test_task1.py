@@ -7,15 +7,17 @@ import task1
 
 class TestTask1(TestCase):
   def test_init(self):
+    # First test case
     with self.vis("empty init"):
       x = task1.HashTable()
+    # Second test case
     with self.vis("init with size and base"):
       z = task1.HashTable(800, 2398)
       
     assert self.check_okay("init")
     
   def test_hash(self):
-
+    # First Test case
     x = task1.HashTable(1024, 17)
     for (key, expect) in [("", 0),
                           ("abcdef", 389),
@@ -23,6 +25,13 @@ class TestTask1(TestCase):
         with self.vis():
           self.assertEqual(x.hash(key), expect, msg=f"Unexpected hash with base 17 and key {key}.")
 
+    # Second Test case
+    x = task1.HashTable(100, 17)
+    for (key, expect) in [("", 0),
+                          ("abcdef", 93),
+                          ("defabc", 45)]:
+        with self.vis():
+          self.assertEqual(x.hash(key), expect, msg=f"Unexpected hash with base 17 and key {key}.")
     assert self.check_okay("hash")
 
   # The tests for __contains__ and __getitem__ use __setitem__, so we don't make any assumptions
@@ -31,19 +40,23 @@ class TestTask1(TestCase):
   def test_contains(self):
     x = task1.HashTable(1024, 1)
 
+    # First testcase
     with self.vis():
       self.assertFalse("abcdef" in x, "False positive in __contains__ for empty table.")
 
+    # Second Testcase
     with self.vis("unexpected failure in setitem"):
       x["abcdef"] = 18
       x["definitely a string"] = None
       x["abdcef"] = "abcdef"
     
+    # Third Testcase
     # Check for the Ture condition
     for key in ["abcdef", "definitely a string", "abdcef"]:
       with self.vis():
         self.assertTrue(key in x, "False negative in __contains__ for key {}".format(key))
 
+    # Forth Testcase
     # Check False condition
     with self.vis():
       self.assertEqual("key" in x, False, msg = "contains failed.")
@@ -53,16 +66,21 @@ class TestTask1(TestCase):
   def test_getitem(self):
     x = task1.HashTable(1024, 1)
 
+    # First testcase
     with self.vis():
       with self.assertRaises(KeyError, msg="x[key] should raise KeyError for missing key."):
         elt = x["abcdef"]
       
+    # Second testcase
     with self.vis("unexpected failure in setitem"):
       x["abcdef"] = 18
       x["definitely a string"] = None
+
+    # Third testcase
     with self.vis():
       self.assertEqual(x["abcdef"], 18, msg = "Read after store failed.")
 
+    # Forth testcase
     x["abdcef"] = 22
     with self.vis():
       self.assertEqual(x["abdcef"], 22, msg = "Read after store failed.")
@@ -73,6 +91,7 @@ class TestTask1(TestCase):
   def test_setitems(self):
     x = task1.HashTable(1024, 1)
 
+    # First Test case
     # Set 2 values 
     with self.vis("unexpected failure in setitem"):
       x["abcdef"] = 18
@@ -81,6 +100,7 @@ class TestTask1(TestCase):
     # Check wether 2 items are set properly or not
     assert x.count == 2
 
+    # Second Test case
     # Check for each value
     with self.vis():
       self.assertEqual(x["abcdef"], 18, msg = "Read after store failed.")
